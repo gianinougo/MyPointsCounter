@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyPointsCounter</string>
+    <string name="txt_suma">Suma</string>
+    <string name="txt_resta">Resta</string>
+    <string name="txt_reset">Reset</string>
+    <string name="txt_save">Guardar puntuación</string>
+    <string name="txt_save_info">Puntuación guardada correctamente\n%s</string>
+    <string name="txt_info_reset">El contador ya está a <b>cero</b>.</string>
+    <string name="contador">Contador</string>
+    <string name="tvsaved">tvSaved</string>
+    <string name="button">Button</string>
+</resources>

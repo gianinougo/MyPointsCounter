@@ -9,4 +9,5 @@
     <string name="contador">Contador</string>
     <string name="tvsaved">tvSaved</string>
     <string name="button">Button</string>
+    <string name="filename">MyPointsCounter.txt</string>
 </resources>

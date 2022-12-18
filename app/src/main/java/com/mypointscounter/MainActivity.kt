@@ -1,19 +1,28 @@
 package com.mypointscounter
 
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.mypointscounter.databinding.ActivityMainBinding
 import com.mypointscounter.model.MainViewModel
 import com.mypointscounter.model.MyPoints
+import com.mypointscounter.utils.MyUtils
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding;
     lateinit var mainViewModel: MainViewModel;
-    //var contador : Int = 0;
+    lateinit var myUtils: MyUtils;
+    lateinit var myPoints: MyPoints;
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,8 +62,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imageButton.setOnClickListener {
+            var date = LocalDate.now();
+            var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            var formattedDate = date.format(formatter)
+            var currentDateTime= LocalDateTime.now();
+            var time = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
             binding.tvSaved.text =
-                resources.getString(R.string.txt_save_info, "*");
+                resources.getString(R.string.txt_save_info, "$formattedDate - $time");
 
         }
 

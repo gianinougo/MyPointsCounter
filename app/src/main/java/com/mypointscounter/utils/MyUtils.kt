@@ -10,6 +10,7 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.Settings.Global.getString
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
 import com.mypointscounter.R
 import com.mypointscounter.model.MyPoints
@@ -19,17 +20,28 @@ import java.io.OutputStreamWriter
 
 class MyUtils {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun vibrate(context: Context){
 
        val vibrator: Vibrator
        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
            val vibratorManager = context.getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager;
            vibrator = vibratorManager.defaultVibrator;
-           Toast.makeText(context, "Vibrando", Toast.LENGTH_SHORT).show()
+           if (!vibrator.hasVibrator()){
+               Toast.makeText(context, "no tienes vibrador", Toast.LENGTH_SHORT).show()
+           } else {
+               Toast.makeText(context, "Vibrando", Toast.LENGTH_SHORT).show()
+           }
 
        } else {
            vibrator = context.getSystemService(VIBRATOR_SERVICE) as Vibrator
-           Toast.makeText(context, "Vibrando", Toast.LENGTH_SHORT).show()
+           val vibrationEffect = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
+           if (!vibrator.hasVibrator()){
+               Toast.makeText(context, "no tienes vibrador", Toast.LENGTH_SHORT).show()
+           } else {
+               Toast.makeText(context, "Vibrando", Toast.LENGTH_SHORT).show()
+               vibrator.vibrate(vibrationEffect);
+           }
        }
 
 

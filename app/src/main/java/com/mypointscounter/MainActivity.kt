@@ -1,12 +1,13 @@
 package com.mypointscounter
 
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.mypointscounter.databinding.ActivityMainBinding
 import com.mypointscounter.model.MainViewModel
 import com.mypointscounter.model.MyPoints
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar()?.hide();
+        }
 
         val myUtils =  MyUtils();
 
@@ -55,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvContador.text = mainViewModel.contador.toString();
                 myUtils.vibrate(this);
             }
+
             binding.tvContador.text = mainViewModel.contador.toString();
             myUtils.vibrate(this);
         }
@@ -63,6 +69,10 @@ class MainActivity : AppCompatActivity() {
             mainViewModel.contador = 0;
             binding.tvContador.setTextColor(Color.BLACK);
             binding.tvContador.text = mainViewModel.contador.toString();
+
+            if ( mainViewModel.contador == 0){
+                Snackbar.make(binding.root, R.string.txt_info_reset, Snackbar.LENGTH_LONG).show();
+            }
             myUtils.vibrate(this);
         }
 

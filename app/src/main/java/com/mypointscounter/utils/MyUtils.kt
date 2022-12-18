@@ -50,11 +50,11 @@ class MyUtils {
             salida.write(datos.toString() + "\n");
             salida.close();
 
-            val toast = Toast.makeText(context, "Guardado Correctamente", Toast.LENGTH_LONG)
+            val toast = Toast.makeText(context, "Guardado Correctamente", Toast.LENGTH_LONG);
             toast.show()
             return true
         } catch (e: IOException) {
-            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show();
             return false
         }
         return true

@@ -66,13 +66,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btReset.setOnClickListener {
+            if ( mainViewModel.contador == 0){
+                Snackbar.make(binding.root, R.string.txt_info_reset, Snackbar.LENGTH_LONG).show();
+            }
             mainViewModel.contador = 0;
             binding.tvContador.setTextColor(Color.BLACK);
             binding.tvContador.text = mainViewModel.contador.toString();
 
-            if ( mainViewModel.contador == 0){
-                Snackbar.make(binding.root, R.string.txt_info_reset, Snackbar.LENGTH_LONG).show();
-            }
+
             myUtils.vibrate(this);
         }
 
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 
             var date = LocalDate.now();
-            var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            var formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             var formattedDate = date.format(formatter)
             var currentDateTime= LocalDateTime.now();
             var time = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))

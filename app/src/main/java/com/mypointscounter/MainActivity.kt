@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding;
     lateinit var mainViewModel: MainViewModel;
     lateinit var myUtils: MyUtils;
-    lateinit var myPoints: MyPoints;
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,11 +61,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.imageButton.setOnClickListener {
+
+
             var date = LocalDate.now();
             var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
             var formattedDate = date.format(formatter)
             var currentDateTime= LocalDateTime.now();
             var time = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
+
+            var datos = MyPoints(mainViewModel.contador, formattedDate, time);
+
+            println(datos);
+
             binding.tvSaved.text =
                 resources.getString(R.string.txt_save_info, "$formattedDate - $time");
 

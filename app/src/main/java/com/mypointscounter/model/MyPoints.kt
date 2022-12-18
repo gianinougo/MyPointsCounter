@@ -1,6 +1,6 @@
 package com.mypointscounter.model
 
-data class MyPoints(var id: Int, var points: Int, var date: String, var hour: String) {
+data class MyPoints(var id: Int?, var points: Int, var date: String, var hour: String) {
 
     init {
         this.id = id;
@@ -8,4 +8,6 @@ data class MyPoints(var id: Int, var points: Int, var date: String, var hour: St
         this.date = date;
         this.hour = hour;
     }
+
+    constructor(points: Int, date: String, hour: String) : this(null, points,date, hour);
 }

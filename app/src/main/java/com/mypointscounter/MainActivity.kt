@@ -19,12 +19,13 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding;
     lateinit var mainViewModel: MainViewModel;
-    lateinit var myUtils: MyUtils;
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val myUtils =  MyUtils();
 
         binding = ActivityMainBinding.inflate(layoutInflater);
         //setContentView(R.layout.activity_main)
@@ -42,7 +43,9 @@ class MainActivity : AppCompatActivity() {
             if (mainViewModel.contador >= 0){
                 binding.tvContador.setTextColor(Color.BLACK);
                 binding.tvContador.text = mainViewModel.contador.toString();
+                myUtils.vibrate(this);
             }
+
         }
 
         binding.btResta.setOnClickListener {
@@ -50,14 +53,17 @@ class MainActivity : AppCompatActivity() {
             if (mainViewModel.contador < 0){
                 binding.tvContador.setTextColor(Color.RED);
                 binding.tvContador.text = mainViewModel.contador.toString();
+                myUtils.vibrate(this);
             }
             binding.tvContador.text = mainViewModel.contador.toString();
+            myUtils.vibrate(this);
         }
 
         binding.btReset.setOnClickListener {
             mainViewModel.contador = 0;
             binding.tvContador.setTextColor(Color.BLACK);
             binding.tvContador.text = mainViewModel.contador.toString();
+            myUtils.vibrate(this);
         }
 
         binding.imageButton.setOnClickListener {
@@ -72,6 +78,10 @@ class MainActivity : AppCompatActivity() {
             var datos = MyPoints(mainViewModel.contador, formattedDate, time);
 
             println(datos);
+
+            myUtils.savePoints(this, datos);
+            myUtils.vibrate(this);
+
 
             binding.tvSaved.text =
                 resources.getString(R.string.txt_save_info, "$formattedDate - $time");

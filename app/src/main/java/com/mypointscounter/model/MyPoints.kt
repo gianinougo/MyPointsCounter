@@ -9,5 +9,11 @@ data class MyPoints(var id: Int?, var points: Int, var date: String, var hour: S
         this.hour = hour;
     }
 
-    constructor(points: Int, date: String, hour: String) : this(null, points,date, hour);
+    constructor(points: Int, date: String, hour: String) : this(null, points,date, hour)
+
+    override fun toString(): String {
+        return "$points;$date;$hour"
+    };
+
+
 }

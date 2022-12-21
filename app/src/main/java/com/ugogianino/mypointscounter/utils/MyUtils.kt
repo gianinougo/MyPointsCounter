@@ -1,4 +1,4 @@
-package com.mypointscounter.utils
+package com.ugogianino.mypointscounter.utils
 
 import android.app.Activity
 import android.content.Context
@@ -8,12 +8,10 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
-import android.provider.Settings.Global.getString
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.getSystemService
-import com.mypointscounter.R
-import com.mypointscounter.model.MyPoints
+import com.ugogianino.mypointscounter.R
+import com.ugogianino.mypointscounter.model.MyPoints
 import java.io.IOException
 import java.io.OutputStreamWriter
 

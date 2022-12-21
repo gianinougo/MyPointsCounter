@@ -1,4 +1,4 @@
-package com.mypointscounter.model
+package com.ugogianino.mypointscounter.model
 
 data class MyPoints(var id: Int?, var points: Int, var date: String, var hour: String) {
 

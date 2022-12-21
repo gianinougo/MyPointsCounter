@@ -1,4 +1,4 @@
-package com.mypointscounter
+package com.ugogianino.mypointscounter
 
 import org.junit.Test
 

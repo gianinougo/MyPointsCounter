@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8EB3b8"
-    tools:context=".MainActivity">
+    tools:context="com.ugogianino.mypointscounter.MainActivity">
 
 
     <ImageView
@@ -21,16 +21,19 @@
 
     <TextView
         android:id="@+id/tvContador"
-        android:layout_width="320dp"
-        android:layout_height="274dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/border_marcador"
         android:gravity="center_vertical"
         android:text="@string/contador"
         android:textAlignment="center"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlCompat" />
@@ -39,17 +42,17 @@
         android:id="@+id/tvSaved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="112dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/txt_save_info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="44dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,38 +61,48 @@
 
     <Button
         android:id="@+id/btReset"
-        android:layout_width="361dp"
-        android:layout_height="65dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/color_reset"
         android:text="@string/txt_reset"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvSaved" />
 
     <Button
         android:id="@+id/btResta"
-        android:layout_width="150dp"
-        android:layout_height="61dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/color_resta"
         android:text="@string/txt_resta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btSuma"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btReset"
         app:layout_constraintTop_toBottomOf="@+id/btReset" />
 
     <Button
         android:id="@+id/btSuma"
-        android:layout_width="150dp"
-        android:layout_height="61dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/color_suma"
         android:text="@string/txt_suma"
         app:layout_constraintBottom_toBottomOf="@+id/btResta"
         app:layout_constraintEnd_toEndOf="@+id/btReset"
-        app:layout_constraintTop_toTopOf="@+id/btResta"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/btResta"
+        app:layout_constraintTop_toTopOf="@+id/btResta" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="355dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

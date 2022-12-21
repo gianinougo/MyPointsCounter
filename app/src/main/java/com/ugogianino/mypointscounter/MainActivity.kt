@@ -1,4 +1,4 @@
-package com.mypointscounter
+package com.ugogianino.mypointscounter
 
 import android.content.res.Configuration
 import android.graphics.Color
@@ -8,10 +8,10 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import com.mypointscounter.databinding.ActivityMainBinding
-import com.mypointscounter.model.MainViewModel
-import com.mypointscounter.model.MyPoints
-import com.mypointscounter.utils.MyUtils
+import com.ugogianino.mypointscounter.databinding.ActivityMainBinding
+import com.ugogianino.mypointscounter.model.MainViewModel
+import com.ugogianino.mypointscounter.model.MyPoints
+import com.ugogianino.mypointscounter.utils.MyUtils
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         outState.run{
             putString("Contador", binding.tvContador.text.toString());
+            putString("Texto", binding.tvSaved.text.toString());
         }
         super.onSaveInstanceState(outState)
     }
@@ -117,6 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         savedInstanceState.run {
             binding.tvContador.text = this.getString("Contador");
+            binding.tvSaved.text = this.getString("Texto");
         }
 
     }

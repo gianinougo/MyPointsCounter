@@ -1,4 +1,4 @@
-package com.mypointscounter.model
+package com.ugogianino.mypointscounter.model
 
 import androidx.lifecycle.ViewModel
 

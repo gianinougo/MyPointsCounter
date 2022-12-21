@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.mypointscounter'
+    namespace 'com.ugogianino.mypointscounter'
     compileSdk 32
 
     defaultConfig {
